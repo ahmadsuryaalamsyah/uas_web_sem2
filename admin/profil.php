@@ -1,9 +1,8 @@
 <?php 
    session_start();
     include('../koneksi/koneksi.php');
-    $id_user = $_SESSION['id_user'];
-    $sql = "select `nama`, `email`,`foto` from `user`
-    where `id_user`='$id_user'";
+    $user_id = $_SESSION['user_id'];
+    $sql = "select `nama`, `email`,`foto` from `users` where `user_id`='$user_id'";
    $query = mysqli_query($koneksi, $sql);
    while($data = mysqli_fetch_row($query)){
    	$nama = $data[0];

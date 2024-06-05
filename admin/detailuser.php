@@ -2,15 +2,16 @@
 session_start();
 include('../koneksi/koneksi.php');
 if (isset($_GET['id'])) {
-    $id_user = $_GET['id'];
-    $sql_d = "SELECT `nama`, `email`, `level`, `username`, `foto` FROM `user` WHERE `id_user` = '$id_user'";
+    $user_id = $_GET['id'];
+    $sql_d = "SELECT `nama`, `email`, `role`, `username`, `foto`,`password` FROM `users` WHERE `user_id` = '$user_id'";
     $query_d = mysqli_query($koneksi, $sql_d);
     while ($data_d = mysqli_fetch_row($query_d)) {
         $nama = $data_d[0];
         $email = $data_d[1];
-        $level = $data_d[2];
+        $role = $data_d[2];
         $username = $data_d[3];
         $foto = $data_d[4];
+        $password = $data_d[5];
     }
   }
 ?>
@@ -69,11 +70,15 @@ if (isset($_GET['id'])) {
               </tr>
               <tr>
                 <td width="20%"><strong>Level</strong></td>
-                <td width="80%"><?php echo $level; ?></td>
+                <td width="80%"><?php echo $role; ?></td>
               </tr>
               <tr>
                 <td width="20%"><strong>Username</strong></td>
                 <td width="80%"><?php echo $username; ?></td>
+              </tr>
+              <tr>
+                <td width="20%"><strong>Password</strong></td>
+                <td width="80%"><?php echo $password; ?></td>
               </tr>
             </tbody>
           </table>

@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nama = $_POST['nama'];
     $email = $_POST['email'];
     $username = $_POST['username'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $password = $_POST['password'];
     $role = $_POST['role'];
 
     if (empty($nama)) {
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $foto = $_FILES['foto']['name'];
             move_uploaded_file($_FILES['foto']['tmp_name'], 'uploads/' . $foto);
         }
-        $sql = "INSERT INTO `user` (`nama`, `email`, `username`, `password`, `role`, `foto`) VALUES ('$nama', '$email', '$username', '$password', '$role', '$foto')";
+        $sql = "INSERT INTO `users` (`nama`, `email`, `username`, `password`, `role`, `foto`) VALUES ('$nama', '$email', '$username', '$password', '$role', '$foto')";
         if (mysqli_query($koneksi, $sql)) {
             header('Location: user.php');
             exit;
@@ -110,8 +110,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="role" class="col-sm-3 col-form-label">role</label>
                 <div class="col-sm-7">
                   <select class="form-control" name="role" id="role">
-                    <option value="superadmin">superadmin</option>
                     <option value="admin">admin</option>
+                    <option value="user">user</option>
                   </select>
                 </div>
               </div>

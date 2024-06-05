@@ -4,25 +4,38 @@
         $user = $_POST['username'];
         $pass = $_POST['password'];
         $username = mysqli_real_escape_string($koneksi, $user);
-        $password = mysqli_real_escape_string($koneksi, MD5($pass));
-        $sql="select `user_id`, `role` from `user` where `username`='$username' and `password`='$password'";
+        $password = mysqli_real_escape_string($koneksi, $pass);
+
+        // Debugging: Check the values of $username and $password
+        echo "Username: $username<br>";
+        echo "Password (hashed): $password<br>";
+
+        $sql = "SELECT `user_id`, `role` FROM `users` WHERE `username`='$username' AND `password`='$password'";
         $query = mysqli_query($koneksi, $sql);
+
+        // Debugging: Check if the query executed successfully
+        if (!$query) {
+            die("Query Error: " . mysqli_error($koneksi));
+        }
+
         $jumlah = mysqli_num_rows($query);
-        if(empty($user)){
+        if (empty($user)) {
             header("Location:index.php?gagal=userKosong");
-        }else if(empty($pass)){
+        } else if (empty($pass)) {
             header("Location:index.php?gagal=passKosong");
-        }else if($jumlah==0){
+        } else if ($jumlah == 0) {
+            // Debugging: Output message if no user found
+            echo "Username or password incorrect.<br>";
             header("Location:index.php?gagal=userpassSalah");
-        }else{
+        } else {
             session_start();
-            while($data = mysqli_fetch_row($query)){
-                $id_user = $data[0]; 
-                $level = $data[1]; //speradmin
-                $_SESSION['id_user']=$id_user;
-                $_SESSION['level']=$level;
+            while ($data = mysqli_fetch_row($query)) {
+                $user_id = $data[0];
+                $role = $data[1]; //admin, user
+                $_SESSION['user_id'] = $user_id;
+                $_SESSION['role'] = $role;
                 header("Location:profil.php");
-            }           
+            }
         }
     }
 ?>

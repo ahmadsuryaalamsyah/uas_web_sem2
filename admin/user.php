@@ -6,7 +6,7 @@ include('../koneksi/koneksi.php');
  } else {
     $katakunci = "";
  }
- $sql = "SELECT `id_user`, `nama`, `email`, `level` FROM `user`";
+ $sql = "SELECT `user_id`, `nama`, `email`, `role` FROM `users`";
  if (!empty($katakunci)) {
   $sql .= " WHERE `nama` LIKE '%$katakunci%' OR `email` LIKE '%$katakunci%'";
  }
@@ -66,7 +66,7 @@ include('../koneksi/koneksi.php');
                         <th width="5%">No</th>
                         <th width="30%">Nama</th>
                         <th width="30%">Email</th>
-                        <th width="20%">Level</th>
+                        <th width="20%">Role</th>
                         <th width="15%"><center>Aksi</center></th>
                       </tr>
                     </thead>
@@ -77,13 +77,13 @@ include('../koneksi/koneksi.php');
                         $id_user = $data[0];
                         $nama = $data[1];
                         $email = $data[2];
-                        $level = $data[3];
+                        $role = $data[3];
                     ?>
                       <tr>
                         <td><?php echo $no; ?></td>
                         <td><?php echo $nama; ?></td>
                         <td><?php echo $email; ?></td>
-                        <td><?php echo $level; ?></td>
+                        <td><?php echo $role; ?></td>
                         <td align="center">
                           <a href="edituser.php?id=<?php echo $id_user; ?>" class="btn btn-xs btn-info" title="Edit"><i class="fas fa-edit"></i></a>
                           <a href="detailuser.php?id=<?php echo $id_user; ?>" class="btn btn-xs btn-info" title="Detail"><i class="fas fa-eye"></i></a>

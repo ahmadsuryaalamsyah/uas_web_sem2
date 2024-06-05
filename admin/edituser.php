@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $username = $_POST['username'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $level = $_POST['level'];
+    $role = $_POST['role'];
 
     if (empty($nama)) {
         $error_message = "Maaf data nama wajib di isi";
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $foto = $_FILES['foto']['name'];
             move_uploaded_file($_FILES['foto']['tmp_name'], 'uploads/' . $foto);
         }
-        $sql = "INSERT INTO `user` (`nama`, `email`, `username`, `password`, `level`, `foto`) VALUES ('$nama', '$email', '$username', '$password', '$level', '$foto')";
+        $sql = "INSERT INTO `users` (`nama`, `email`, `username`, `password`, `role`, `foto`) VALUES ('$nama', '$email', '$username', '$password', '$role', '$foto')";
         if (mysqli_query($koneksi, $sql)) {
             header('Location: user.php');
             exit;
