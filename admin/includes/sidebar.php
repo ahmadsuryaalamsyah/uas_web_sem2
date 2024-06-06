@@ -31,9 +31,9 @@
             </a>
             <ul class="nav nav-treeview">              
               <li class="nav-item">
-                <a href="kategoriblog.php" class="nav-link">
+                <a href="categories.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Kategori Blog</p>
+                  <p>Category</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -53,16 +53,16 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="blog.php" class="nav-link">
+            <a href="artikel.php" class="nav-link">
               <i class="nav-icon fab fa-blogger"></i>
               <p>
-                Blog
+                Artikel
               </p>
             </a>
           </li>
           <?php 
-           if (isset($_SESSION['level'])){
-           if ($_SESSION['level']=="Superadmin"){?>
+           if (isset($_SESSION['role'])){
+           if ($_SESSION['role']=="admin"){?>
           <li class="nav-item">
             <a href="user.php" class="nav-link">
               <i class="nav-icon fas fa-user-cog"></i>

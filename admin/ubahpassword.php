@@ -22,7 +22,6 @@
         </div>
       </div>
     </section>
-
     <section class="content">
     <div class="card card-info">
       <div class="card-header">

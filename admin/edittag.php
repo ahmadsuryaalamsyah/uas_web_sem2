@@ -2,12 +2,12 @@
 session_start();
 include('../koneksi/koneksi.php');
 if(isset($_GET['data'])){
-  $id_tag = $_GET['data'];
-  $_SESSION['id_tag'] = $id_tag;
-  $sql_d = "SELECT `tag` FROM `tag` WHERE `id_tag` = '$id_tag'";
+  $tag_id = $_GET['data'];
+  $_SESSION['tag_id'] = $tag_id;
+  $sql_d = "SELECT `name` FROM `tags` WHERE `tag_id` = '$tag_id'";
   $query_d = mysqli_query($koneksi,$sql_d);
   while($data_d = mysqli_fetch_row($query_d)){
-      $tag = $data_d[0];
+      $name= $data_d[0];
   }
  }
 ?>
@@ -67,7 +67,7 @@ if(isset($_GET['data'])){
                             <div class="form-group row">
                                 <label for="Tag" class="col-sm-3 col-form-label">Tag</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="tag" name="tag" value="<?php echo $tag;?>">
+                                    <input type="text" class="form-control" id="tag" name="tag" value="<?php echo $name;?>">
                                 </div>
                             </div>
                         </div>
