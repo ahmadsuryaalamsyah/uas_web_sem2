@@ -84,7 +84,7 @@ if ((isset($_GET['aksi'])) && (isset($_GET['data']))) {
                             </thead>
                             <tbody>
                                 <?php 
-                                $batas = 3;
+                                $batas = 4;
                                 if (!isset($_GET['halaman'])) {
                                     $posisi = 0;
                                     $halaman = 1;

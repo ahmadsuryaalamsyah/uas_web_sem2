@@ -100,7 +100,7 @@ if((isset($_GET['aksi']))&&(isset($_GET['data']))){
                      </thead>
                      <tbody>
                      <?php 
-                     $batas = 2;
+                     $batas = 4;
                      if(!isset($_GET['halaman'])){
                           $posisi = 0;
                           $halaman = 1;
@@ -139,7 +139,7 @@ if((isset($_GET['aksi']))&&(isset($_GET['data']))){
                          <a href="editartikel.php?data=<?php echo $article_id;?>"  
                          class="btn btn-xs btn-info" title="Edit">
                          <i class="fas fa-edit"></i></a>
-                      <a href="viewartikel.php?data=<?php echo $article_id;?>" 
+                       <a href="detailartikel.php?data=<?php echo $article_id;?>" 
                          class="btn btn-xs btn-info" title="Detail">
                          <i class="fas fa-eye"></i></a>
                          <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?php echo $title; ?>?')) 

@@ -48,18 +48,22 @@
             <a href="konten.php" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
-                Konten
+                 Comment
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="artikel.php" class="nav-link">
-              <i class="nav-icon fab fa-blogger"></i>
-              <p>
-                Artikel
-              </p>
-            </a>
-          </li>
+          <?php 
+           if (isset($_SESSION['role'])){
+           if ($_SESSION['role']=="admin"){?>
+            <li class="nav-item">
+              <a href="artikel.php" class="nav-link">
+                <i class="nav-icon fab fa-blogger"></i>
+                <p>
+                  Artikel
+                </p>
+              </a>
+            </li>
+          <?php } } ?>
           <?php 
            if (isset($_SESSION['role'])){
            if ($_SESSION['role']=="admin"){?>
