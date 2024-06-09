@@ -44,15 +44,15 @@
                             <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
                                 <!-- sticky -->
                                     <div class="sticky-logo">
-                                        <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                        <a href="index.php"><img src="assets/img/logo/logo.png" alt=""></a>
                                     </div>
                                 <!-- Main-menu -->
                                 <div class="main-menu d-none d-md-block">
                                     <nav>                  
                                         <ul id="navigation">    
                                             <li><a href="index.php">Home</a></li>
-                                            <li><a href="categori.html">Category</a></li>
-                                            <li><a href="about.html">About</a></li>
+                                            <li><a href="categori.php">Category</a></li>
+                                            <li><a href="about.php">About</a></li>
                                             <li><a href="latest_news.html">Top News</a></li>
                                             <li><a href="contact.php">Contact</a></li>
                                         </ul>

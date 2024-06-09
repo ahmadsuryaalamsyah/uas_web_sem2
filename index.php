@@ -111,50 +111,54 @@
             </div>
             <!-- Trending Area End -->
             <!-- Weekly-News start -->
-            <div class="weekly-news-area pt-50">
-                <div class="container">
-                    <div class="weekly-wrapper">
-                        <!-- section Tittle -->
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="section-tittle mb-30">
-                                    <h3>Weekly Top News</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="weekly-top-news">
-                            <div class="row">
-                                <?php 
-                                    $sql_k = "SELECT `name`, `title`, `cover`, DATE_FORMAT(`created_at`, '%d-%m-%Y'), `article_id` FROM `articles` 
-                                              INNER JOIN `categories` ON `articles`.`category_id` = `categories`.`category_id` 
-                                              WHERE `article_id` BETWEEN 2 AND 4";
-                                    $query_k = mysqli_query($koneksi, $sql_k);
-                                    while ($data_k = mysqli_fetch_row($query_k)) {
-                                        $name = $data_k[0];
-                                        $title = $data_k[1];
-                                        $cover = $data_k[2];
-                                        $date = $data_k[3];
-                                        $article_id = $data_k[4];
-                                ?>
-                                <div class="col-lg-4">
-                                    <div class="single-bottom mb-35">
-                                        <div class="trend-bottom-img mb-30">
-                                            <img style="width: 350px" height="250px" src="admin/cover/<?php echo htmlspecialchars($cover); ?>" alt="">
-                                        </div>
-                                        <div class="trend-bottom-cap">
-                                            <span class="color1"><?php echo htmlspecialchars($name); ?>, <?php echo htmlspecialchars($date); ?></span>
-                                            <h5><a href="details.php?data=<?php echo htmlspecialchars($article_id); ?>"><?php echo htmlspecialchars($title); ?></a></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php 
-                                    }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           <div class="weekly-news-area pt-50">
+               <div class="container">
+                   <div class="weekly-wrapper">
+                       <!-- section Tittle -->
+                       <div class="row">
+                           <div class="col-lg-12">
+                               <div class="section-tittle mb-30">
+                                   <h3>Weekly Top News</h3>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="weekly-top-news">
+                           <div class="row">
+                               <?php 
+                                   $sql_k = "SELECT `a`.`title`, `a`.`cover`, DATE_FORMAT(`a`.`created_at`, '%d-%m-%Y') AS `formatted_date`, `a`.`article_id`, COUNT(`c`.`comment_id`) AS `comment` 
+                                             FROM `articles` `a` 
+                                             INNER JOIN `comments` `c` ON `a`.`article_id` = `c`.`article_id` 
+                                             GROUP BY `a`.`article_id`
+                                             ORDER BY `comment` DESC 
+                                             LIMIT 3";
+                                   $query_k = mysqli_query($koneksi, $sql_k);
+                                   while ($data_k = mysqli_fetch_row($query_k)) {
+                                       $title = $data_k[0];
+                                       $cover = $data_k[1];
+                                       $date = $data_k[2];
+                                       $article_id = $data_k[3];
+                                       $comment = $data_k[4];
+                               ?>
+                               <div class="col-lg-4">
+                                   <div class="single-bottom mb-35">
+                                       <div class="trend-bottom-img mb-30">
+                                           <img style="width: 350px; height: 250px;" src="admin/cover/<?php echo htmlspecialchars($cover); ?>" alt="">
+                                       </div>
+                                       <div class="trend-bottom-cap">
+                                           <span class="color1"><?php echo htmlspecialchars($name); ?>, <?php echo htmlspecialchars($date); ?></span>
+                                           <h5><a href="details.php?data=<?php echo htmlspecialchars($article_id); ?>"><?php echo htmlspecialchars($title); ?></a></h5>
+                                       </div>
+                                   </div>
+                               </div>
+                               <?php 
+                                   }
+                               ?>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
             <!-- End Weekly-News -->
             <!-- Whats New Start -->
             <section class="whats-news-area pt-50 pb-20">

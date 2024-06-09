@@ -50,7 +50,7 @@
       	      <div class="form-group">
       		      <label for="name" class="col-sm-2 control-label">Name</label>
       		       <div class="col-sm-10">
-                 <input type="text" class="form-control" id="name" name="name" placeholder="First & Last Name" value="">
+                 <input type="text" class="form-control" id="name" name="name" placeholder="Nama" value="">
       		      </div>
       	    </div>
           	<div class="form-group">
@@ -62,13 +62,13 @@
       	<div class="form-group">
       		<label for="message" class="col-sm-2 control-label">Message</label>
       		<div class="col-sm-10">
-          <textarea class="form-control" rows="4" name="message" placeholder="Your Message"></textarea>
+          <textarea class="form-control" rows="4" name="message" placeholder="Pesan"></textarea>
       		</div>
       	</div>
       	<div class="form-group">
       		<label for="human" class="col-sm-2 control-label">2 + 3 = ?</label>
       		<div class="col-sm-10">
-      			<input type="text" class="form-control" id="human" name="human" placeholder="Your Answer">
+      			<input type="text" class="form-control" id="human" name="human" placeholder="Jawaban">
       		</div>
       	</div>
       	<div class="form-group">
