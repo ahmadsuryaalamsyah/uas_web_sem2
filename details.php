@@ -128,9 +128,9 @@ if(isset($_GET['data'])){
                                  ?>
                                  <div class="d-flex flex-start mt-3">
                                      <img class="rounded-circle shadow-1-strong me-3" src="admin/foto/<?php echo htmlspecialchars($foto); ?>" alt="avatar" width="60" height="60" />
-                                     <div>
+                                     <div class="px-3">
                                          <h6 class="fw-bold mb-1"><?php echo htmlspecialchars($username); ?></h6>
-                                         <div class="d-flex align-items-center mb-3">
+                                         <div class="d-flex align-items-center mb-2">
                                              <p class="mb-0"><?php echo htmlspecialchars($created_at); ?></p>
                                              <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
                                              <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>

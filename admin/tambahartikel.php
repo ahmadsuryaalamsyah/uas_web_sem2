@@ -34,7 +34,7 @@ include('../koneksi/koneksi.php');
              <h3 class="card-title" style="margin-top:5px;"><i class="fas fa-list-ul"></i> Form Tambah Artikel</h3>
            </div>
            <div class="card-body">
-             <form method="POST" action="simpanartikel.php" enctype="multipart/form-data">
+             <form method="POST" action="konfirmasitambahartikel.php" enctype="multipart/form-data">
                <div class="form-group">
                  <label for="title">Judul</label>
                  <input type="text" class="form-control" id="title" name="title">

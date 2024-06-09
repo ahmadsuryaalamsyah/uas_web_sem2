@@ -1,10 +1,10 @@
 <?php 
 session_start();
 include('../koneksi/koneksi.php');
-if(isset($_SESSION['id_user'])){
-	$id_user = $_SESSION['id_user'];
-  	$sql_d = "select `nama`, `email` from `user` 
-  	where `id_user` = '$id_user'";
+if(isset($_SESSION['user_id'])){
+	$user_id = $_SESSION['user_id'];
+  	$sql_d = "select `nama`, `email` from `users` 
+  	where `user_id` = '$user_id'";
 	$query_d = mysqli_query($koneksi,$sql_d);
 	while($data_d = mysqli_fetch_row($query_d)){
     		$nama= $data_d[0];
@@ -71,7 +71,7 @@ if(isset($_SESSION['id_user'])){
              </div>
            </div>
            <div class="form-group row">
-             <label for="nama" class="col-sm-3 col-form-label">Nama</label>
+             <label for="nama" class="col-sm-3 col-form-label">nama</label>
              <div class="col-sm-7">
                <input type="text" class="form-control" name="nama" id="nama" value="<?php echo $nama;?>">
              </div>

@@ -1,11 +1,11 @@
 <?php 
 session_start();
 include('../koneksi/koneksi.php');
-if(isset($_SESSION['id_user'])){
-	$id_user = $_SESSION['id_user'];
+if(isset($_SESSION['user_id'])){
+	$user_id = $_SESSION['user_id'];
 	$nama = $_POST['nama'];
 	$email = $_POST['email'];
-    $sql_f = "SELECT `foto` FROM `user` WHERE `id_user`='$id_user'";
+    $sql_f = "SELECT `foto` FROM `users` WHERE `user_id`='$user_id'";
     $query_f = mysqli_query($koneksi,$sql_f);
     while($data_f = mysqli_fetch_row($query_f)){
         $foto = $data_f[0];
@@ -23,13 +23,13 @@ if(isset($_SESSION['id_user'])){
             	   if(!empty($foto)){
                      unlink("foto/$foto");
                   }
-		   $sql = "update `user` set `nama`='$nama', 
+		   $sql = "update `users` set `nama`='$nama', 
                   `email`='$email', `foto`='$nama_file' 
-                  where `id_user`='$id_user'";
+                  where `user_id`='$user_id'";
 		   mysqli_query($koneksi,$sql);
 		}else{
-		   $sql = "update `user` set `nama`='$nama', `email`='$email' 
-                  where `id_user`='$id_user'";
+		   $sql = "update `users` set `nama`='$nama', `email`='$email' 
+                  where `user_id`='$user_id'";
 		   mysqli_query($koneksi,$sql);
 		}
       	    header("Location:profil.php?notif=editberhasil");

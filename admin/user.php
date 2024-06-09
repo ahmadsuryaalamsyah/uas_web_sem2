@@ -74,7 +74,7 @@ include('../koneksi/koneksi.php');
                     <?php
                     $no = 1;
                     while ($data = mysqli_fetch_row($query)) {
-                        $id_user = $data[0];
+                        $user_id = $data[0];
                         $nama = $data[1];
                         $email = $data[2];
                         $role = $data[3];
@@ -85,9 +85,9 @@ include('../koneksi/koneksi.php');
                         <td><?php echo $email; ?></td>
                         <td><?php echo $role; ?></td>
                         <td align="center">
-                          <a href="edituser.php?id=<?php echo $id_user; ?>" class="btn btn-xs btn-info" title="Edit"><i class="fas fa-edit"></i></a>
-                          <a href="detailuser.php?id=<?php echo $id_user; ?>" class="btn btn-xs btn-info" title="Detail"><i class="fas fa-eye"></i></a>
-                          <a href="hapususer.php?id=<?php echo $id_user; ?>" class="btn btn-xs btn-warning" onclick="return confirm('Anda yakin ingin menghapus data ini?')" title="Hapus"><i class="fas fa-trash"></i></a>                         
+                          <a href="edituser.php?user_id=<?php echo $user_id; ?>" class="btn btn-xs btn-info" title="Edit"><i class="fas fa-edit"></i></a>
+                          <a href="detailuser.php?id=<?php echo $user_id; ?>" class="btn btn-xs btn-info" title="Detail"><i class="fas fa-eye"></i></a>
+                          <a href="hapususer.php?id=<?php echo $user_id; ?>" class="btn btn-xs btn-warning" onclick="return confirm('Anda yakin ingin menghapus data ini?')" title="Hapus"><i class="fas fa-trash"></i></a>                         
                         </td>
                       </tr>
                     <?php

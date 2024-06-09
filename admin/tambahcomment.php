@@ -80,14 +80,14 @@ include('../koneksi/koneksi.php');
                  <select class="form-control" id="author_id" name="author_id" required>
                    <option value="">Pilih Penulis</option>
                    <?php 
-                   $sql_u = "SELECT `user_id`,`username` FROM `users` ORDER BY `username`";
+                   $sql_u = "SELECT `user_id`,`nama` FROM `users` ORDER BY `nama` ASC";
                    $query_u = mysqli_query($koneksi, $sql_u);
                    while($data_u = mysqli_fetch_row($query_u)){
                        $id_user = $data_u[0];
-                       $username = $data_u[1];
+                       $nama = $data_u[1];
                    ?>
                    <option value="<?php echo $id_user;?>">
-                     <?php echo $username;?>
+                     <?php echo $nama;?>
                    </option> 
                    <?php } ?>
                  </select>
