@@ -22,8 +22,7 @@
             </div>
           </div>
         </div>
-      </section>
-      
+      </section> 
       <section class="content">
         <div class="card card-info">
           <div class="card-header">
@@ -34,16 +33,14 @@
               </a>
             </div>
           </div>
-          <br>
-          
+          <br> 
           <div class="col-sm-10">
             <?php if (!empty($_GET['notif'])): ?>
               <?php if ($_GET['notif'] == "tambahkosong"): ?>
                 <div class="alert alert-danger" role="alert">Maaf, data Category wajib diisi</div>
               <?php endif; ?>
             <?php endif; ?>
-          </div>
-          
+          </div>    
           <form class="form-horizontal" method="post" action="konfirmasitambahcategories.php">
             <div class="card-body">
               <div class="form-group row">
@@ -52,8 +49,7 @@
                   <input type="text" class="form-control" id="categories" name="categories" required>
                 </div>
               </div>
-            </div>
-            
+            </div>          
             <div class="card-footer">
               <div class="col-sm-10">
                 <button type="submit" class="btn btn-info float-right"><i class="fas fa-plus"></i> Tambah</button>

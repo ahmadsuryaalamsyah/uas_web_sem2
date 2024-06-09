@@ -45,7 +45,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="konten.php" class="nav-link">
+            <a href="comment.php" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                  Comment
