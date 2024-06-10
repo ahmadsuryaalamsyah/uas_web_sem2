@@ -3,7 +3,7 @@ session_start();
 include('../koneksi/koneksi.php');
 if(isset($_GET['data'])){
   $article_id = $_GET['data']; 
-  $sql = "SELECT `b`.`cover`, `b`.`title`, `b`.`content`, DATE_FORMAT(`b`.`created_at`, '%d-%m-%Y') AS `create_at`, `u`.`name`
+  $sql = "SELECT `b`.`cover`, `b`.`title`, `b`.`content`, DATE_FORMAT(`b`.`created_at`, '%d-%m-%Y') AS `create_at`, `u`.`nama`
           FROM `articles` `b`
           INNER JOIN `users` `u` ON `b`.`author_id` = `u`.`user_id`
           WHERE `b`.`article_id`='$article_id'"; 

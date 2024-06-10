@@ -5,26 +5,21 @@
         $pass = $_POST['password'];
         $username = mysqli_real_escape_string($koneksi, $user);
         $password = mysqli_real_escape_string($koneksi, $pass);
-
-        // Debugging: Check the values of $username and $password
         echo "Username: $username<br>";
         echo "Password (hashed): $password<br>";
 
         $sql = "SELECT `user_id`, `role` FROM `users` WHERE `username`='$username' AND `password`='$password'";
         $query = mysqli_query($koneksi, $sql);
 
-        // Debugging: Check if the query executed successfully
         if (!$query) {
             die("Query Error: " . mysqli_error($koneksi));
         }
-
         $jumlah = mysqli_num_rows($query);
         if (empty($user)) {
             header("Location:index.php?gagal=userKosong");
         } else if (empty($pass)) {
             header("Location:index.php?gagal=passKosong");
         } else if ($jumlah == 0) {
-            // Debugging: Output message if no user found
             echo "Username or password incorrect.<br>";
             header("Location:index.php?gagal=userpassSalah");
         } else {

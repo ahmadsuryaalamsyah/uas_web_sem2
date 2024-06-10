@@ -6,7 +6,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $content = $_POST['content'];
     $author_id = $_POST['author_id'];
     $category_id = $_POST['category_id'];
-
     $cover = $_FILES['cover']['name'];
     $cover_tmp = $_FILES['cover']['tmp_name'];
     $target_dir = "cover/";

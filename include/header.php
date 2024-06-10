@@ -53,7 +53,7 @@
                                             <li><a href="index.php">Home</a></li>
                                             <li><a href="categori.php">Category</a></li>
                                             <li><a href="about.php">About</a></li>
-                                            <li><a href="latest_news.html">Top News</a></li>
+                                            <li><a href="latest_news.php">Latest News</a></li>
                                             <li><a href="contact.php">Contact</a></li>
                                         </ul>
                                     </nav>

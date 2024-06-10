@@ -3,28 +3,37 @@ session_start();
 include('koneksi/koneksi.php');
 
 if(isset($_GET['data'])){
-  $article_id = $_GET['data']; 
+  $article_id = $_GET['data'];
 
-  $sql = "SELECT `b`.`cover`, `b`.`title`, `b`.`content`, DATE_FORMAT(`b`.`created_at`, '%d-%m-%Y') AS `create_at`, `u`.`nama`
+  $sql = "SELECT `b`.`cover`, `b`.`title`, `b`.`content`, DATE_FORMAT(`b`.`created_at`, '%d-%m-%Y') AS `create_at`, `u`.`nama`,`t`.`name` AS `tag`
           FROM `articles` `b`
           INNER JOIN `users` `u` ON `b`.`author_id` = `u`.`user_id`
+          INNER JOIN `article_tags` `at` ON `b`.`article_id` = `at`.`article_id`
+          INNER JOIN `tags` `t` ON `at`.`tag_id` = `t`.`tag_id`
           WHERE `b`.`article_id`='$article_id'"; 
 
   $query = mysqli_query($koneksi, $sql);
-  if ($data = mysqli_fetch_assoc($query)) {
-    $cover = $data['cover'];
-    $judul = $data['title'];
-    $isi = $data['content']; 
-    $create_at = $data['create_at']; 
-    $nama_penulis = $data['nama'];
+  if ($query) {
+    if ($data = mysqli_fetch_assoc($query)) {
+      $cover = htmlspecialchars($data['cover']);
+      $judul = htmlspecialchars($data['title']);
+      $isi = htmlspecialchars($data['content']); 
+      $create_at = htmlspecialchars($data['create_at']); 
+      $nama_penulis = htmlspecialchars($data['nama']);
+      $tag = htmlspecialchars($data['tag']);
+    } else {
+      echo "Data tidak ditemukan.";
+      exit();
+    }
   } else {
-    echo "Data tidak ditemukan.";
+    echo "Error dalam query: " . mysqli_error($koneksi);
     exit();
   }
 } else {
   echo "Data tidak ditemukan.";
   exit();
 }
+?>
 ?>
 
 <!doctype html>
@@ -106,6 +115,7 @@ if(isset($_GET['data'])){
                             </div>
                             <div class="about-prea">
                                 <p class="about-pera1 mb-25"><?php echo $isi; ?></p>
+                                <p class="about-pera2 mb-25">Tags: <?php echo $tag; ?></p>
                             </div>
                             <div class="mt-3">
                              <div class="border border-top"></div>
@@ -125,6 +135,7 @@ if(isset($_GET['data'])){
                                          $username = $data_b['username'];
                                          $foto = $data_b['foto'];
                                          $created_at = $data_b['create_at'];
+
                                  ?>
                                  <div class="d-flex flex-start mt-3">
                                      <img class="rounded-circle shadow-1-strong me-3" src="admin/foto/<?php echo htmlspecialchars($foto); ?>" alt="avatar" width="60" height="60" />
@@ -137,6 +148,7 @@ if(isset($_GET['data'])){
                                              <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
                                          </div>
                                          <p class="mb-0"><?php echo htmlspecialchars($content); ?></p>
+                                         
                                      </div>
                                  </div>
                                  <?php 

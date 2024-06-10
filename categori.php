@@ -123,8 +123,7 @@ if (isset($_GET['data'])) {
                                                             FROM `articles` `a` 
                                                             INNER JOIN `comments` `c` ON `a`.`article_id` = `c`.`article_id` 
                                                             GROUP BY `a`.`article_id`
-                                                            ORDER BY `comment` DESC 
-                                                            LIMIT 9";
+                                                            ORDER BY `comment` DESC";
                                                     $query_k = mysqli_query($koneksi, $sql_k);
                                                     while ($data_k = mysqli_fetch_row($query_k)) {
                                                         $title = $data_k[0];
@@ -162,28 +161,6 @@ if (isset($_GET['data'])) {
         </div>
     </section>
     <!-- Whats New End -->
-
-    <!-- Start pagination -->
-    <div class="pagination-area pb-45 text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="single-wrap d-flex justify-content-center">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-start">
-                                <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow roted"></span></a></li>
-                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow right-arrow"></span></a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End pagination -->
     </main>
    
    <footer>
