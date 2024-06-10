@@ -60,33 +60,17 @@ include('../koneksi/koneksi.php');
                  </select>
                </div>
                <div class="form-group">
-                 <label for="tag_id">Tag</label>
-                 <select class="form-control" id="tag_id" name="tag_id">
-                   <?php 
-                   $sql_t = "SELECT `tag_id`,`name` FROM `tags` ORDER BY `name`";
-                   $query_t = mysqli_query($koneksi, $sql_t);
-                   while($data_t = mysqli_fetch_row($query_t)){
-                       $id_tag = $data_t[0];
-                       $name = $data_t[1];
-                   ?>
-                   <option value="<?php echo $id_tag;?>">
-                       <?php echo $name;?>
-                   </option>
-                   <?php } ?>
-                 </select>
-               </div>
-               <div class="form-group">
                  <label for="author_id">Penulis</label>
                  <select class="form-control" id="author_id" name="author_id">
                    <?php 
-                   $sql_u = "SELECT `user_id`,`username` FROM `users` ORDER BY `username`";
+                   $sql_u = "SELECT `user_id`,`nama` FROM `users` ORDER BY `nama`";
                    $query_u = mysqli_query($koneksi, $sql_u);
                    while($data_u = mysqli_fetch_row($query_u)){
                        $id_user = $data_u[0];
-                       $username = $data_u[1];
+                       $nama = $data_u[1];
                    ?>
                    <option value="<?php echo $id_user;?>">
-                       <?php echo $username;?>
+                       <?php echo $nama;?>
                    </option>
                    <?php } ?>
                  </select>

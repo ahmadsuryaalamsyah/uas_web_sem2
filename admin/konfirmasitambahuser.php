@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($nama)) {
         $_SESSION['error_message'] = "Maaf data nama wajib di isi";
-        header('Location: tambahuser.php');
+        header('Location: tambahuser.php?notif=tambahkosong');
         exit;
     }
 
@@ -24,25 +24,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!file_exists($target_dir)) {
             if (!mkdir($target_dir, 0777, true)) {
                 $_SESSION['error_message'] = "Maaf, terjadi kesalahan saat membuat direktori upload.";
-                header('Location: tambahuser.php');
+                header('Location: tambahuser.php?notif=tambahkosong');
                 exit;
             }
         }
 
         if (!move_uploaded_file($_FILES['foto']['tmp_name'], $target_file)) {
             $_SESSION['error_message'] = "Maaf, terjadi kesalahan saat mengupload file.";
-            header('Location: tambahuser.php');
+            header('Location: tambahuser.php?notif=tambahkosong');
             exit;
         }
     }
 
     $sql = "INSERT INTO `users` (`nama`, `email`, `username`, `password`, `role`, `foto`) VALUES ('$nama', '$email', '$username', '$password', '$role', '$foto')";
     if (mysqli_query($koneksi, $sql)) {
-        header('Location: user.php');
+        header('Location: user.php?notif=tambahberhasil');
         exit;
     } else {
         $_SESSION['error_message'] = "Error: " . mysqli_error($koneksi);
-        header('Location: tambahuser.php');
+        header('Location: tambahuser.php?notif=tambahkosong');
         exit;
     }
 }

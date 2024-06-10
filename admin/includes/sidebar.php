@@ -21,6 +21,9 @@
               </p>
             </a>
           </li>
+          <?php 
+           if (isset($_SESSION['role'])){
+           if ($_SESSION['role']=="admin"){?>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-database"></i>
@@ -35,15 +38,18 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Category</p>
                 </a>
-              </li>
+              </li>      
               <li class="nav-item">
-                <a href="tag.php" class="nav-link">
+                <a href="artikel.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Tag</p>
+                  <p>
+                    Artikel
+                  </p>
                 </a>
-              </li>
+              </li> 
             </ul>
           </li>
+          <?php } } ?>
           <li class="nav-item">
             <a href="comment.php" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
@@ -52,18 +58,7 @@
               </p>
             </a>
           </li>
-          <?php 
-           if (isset($_SESSION['role'])){
-           if ($_SESSION['role']=="admin"){?>
-            <li class="nav-item">
-              <a href="artikel.php" class="nav-link">
-                <i class="nav-icon fab fa-blogger"></i>
-                <p>
-                  Artikel
-                </p>
-              </a>
-            </li>
-          <?php } } ?>
+
           <?php 
            if (isset($_SESSION['role'])){
            if ($_SESSION['role']=="admin"){?>

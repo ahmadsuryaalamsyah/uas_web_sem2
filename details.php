@@ -5,11 +5,9 @@ include('koneksi/koneksi.php');
 if(isset($_GET['data'])){
   $article_id = $_GET['data'];
 
-  $sql = "SELECT `b`.`cover`, `b`.`title`, `b`.`content`, DATE_FORMAT(`b`.`created_at`, '%d-%m-%Y') AS `create_at`, `u`.`nama`,`t`.`name` AS `tag`
+  $sql = "SELECT `b`.`cover`, `b`.`title`, `b`.`content`, DATE_FORMAT(`b`.`created_at`, '%d-%m-%Y') AS `create_at`, `u`.`nama`
           FROM `articles` `b`
           INNER JOIN `users` `u` ON `b`.`author_id` = `u`.`user_id`
-          INNER JOIN `article_tags` `at` ON `b`.`article_id` = `at`.`article_id`
-          INNER JOIN `tags` `t` ON `at`.`tag_id` = `t`.`tag_id`
           WHERE `b`.`article_id`='$article_id'"; 
 
   $query = mysqli_query($koneksi, $sql);
@@ -20,7 +18,6 @@ if(isset($_GET['data'])){
       $isi = htmlspecialchars($data['content']); 
       $create_at = htmlspecialchars($data['create_at']); 
       $nama_penulis = htmlspecialchars($data['nama']);
-      $tag = htmlspecialchars($data['tag']);
     } else {
       echo "Data tidak ditemukan.";
       exit();
@@ -33,7 +30,6 @@ if(isset($_GET['data'])){
   echo "Data tidak ditemukan.";
   exit();
 }
-?>
 ?>
 
 <!doctype html>
@@ -115,7 +111,6 @@ if(isset($_GET['data'])){
                             </div>
                             <div class="about-prea">
                                 <p class="about-pera1 mb-25"><?php echo $isi; ?></p>
-                                <p class="about-pera2 mb-25">Tags: <?php echo $tag; ?></p>
                             </div>
                             <div class="mt-3">
                              <div class="border border-top"></div>
